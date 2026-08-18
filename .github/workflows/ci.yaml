@@ -80,7 +80,7 @@ jobs:
     updatek8s:
         runs-on: ubuntu-latest
 
-        needs: docker
+        needs: docker  # [build, code-quality, docker]
 
         steps:
         - name: checkout code
@@ -94,14 +94,14 @@ jobs:
         
         - name: Commit and push changes
           run: |
-            git config --global user.email "abhishek@gmail.com"
-            git config --global user.name "Abhishek Veeramalla"
+            git config --global user.email "irisf.lali@gmail.com"
+            git config --global user.name "Iris Lali"
             git add kubernetes/productcatalog/deploy.yaml
             git commit -m "[CI]: Update product catalog image tag"
             git push origin HEAD:main -f
 
         
-        
+##### I love writing CI pipelines, and I love writing them in YAML. I also love writing them for Go projects. This is a simple CI pipeline for a product catalog service written in Go. It has four jobs: build, code-quality, docker, and updatek8s. The build job builds the Go project and runs unit tests. The code-quality job runs golangci-lint to check for code quality issues. The docker job builds a Docker image and pushes it to Docker Hub. The updatek8s job updates the Kubernetes deployment manifest with the new image tag and pushes the changes to the main branch.     
           
 
 
